@@ -1,6 +1,6 @@
 import React from "react";
 import WebsiteLogo from "../assets/websiteLogo/logo.png";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -30,13 +30,34 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to={"/"}>Home</Link>
+                <NavLink
+                  className={({ isActive }) =>
+                    `${isActive ? "text-green-600" : undefined}`
+                  }
+                  to={"/"}
+                >
+                  Home
+                </NavLink>
               </li>
               <li>
-                <a>Apps</a>
+                <NavLink
+                  className={({ isActive }) =>
+                    `${isActive ? "text-green-600" : "text-black"}`
+                  }
+                  to={"/appsPage"}
+                >
+                  Apps
+                </NavLink>
               </li>
               <li>
-                <a>Installations</a>
+                <NavLink
+                  className={({ isActive }) =>
+                    `${isActive ? "text-green-600" : "text-black"}`
+                  }
+                  to={"/installations"}
+                >
+                  Installations
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -47,13 +68,34 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link to={"/"}>Home</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${isActive ? "text-green-600" : undefined}`
+                }
+                to={"/"}
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to={"/appsPage"}>Apps</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${isActive ? "text-green-600" : "text-black"}`
+                }
+                to={"/appsPage"}
+              >
+                Apps
+              </NavLink>
             </li>
             <li>
-              <Link to={"/installations"}>Installations</Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${isActive ? "text-green-600" : "text-black"}`
+                }
+                to={"/installations"}
+              >
+                Installations
+              </NavLink>
             </li>
           </ul>
         </div>
