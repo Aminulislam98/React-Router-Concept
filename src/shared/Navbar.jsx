@@ -1,8 +1,24 @@
 import React from "react";
 import WebsiteLogo from "../assets/websiteLogo/logo.png";
 import { Link, NavLink } from "react-router";
+import MyNavLink from "../Utilities/NavbarNavLink/MyNavLink";
 
 const Navbar = () => {
+  const links = [
+    {
+      path: "/",
+      title: "Home",
+    },
+    {
+      path: "/appsPage",
+      title: "Apps",
+    },
+    {
+      path: "/installations",
+      title: "Installations",
+    },
+  ];
+
   return (
     <nav className="w-full bg-base-100 shadow-sm">
       <div className="navbar max-w-7xl w-full mx-auto">
@@ -29,36 +45,11 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    `${isActive ? "text-green-600" : undefined}`
-                  }
-                  to={"/"}
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    `${isActive ? "text-green-600" : "text-black"}`
-                  }
-                  to={"/appsPage"}
-                >
-                  Apps
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className={({ isActive }) =>
-                    `${isActive ? "text-green-600" : "text-black"}`
-                  }
-                  to={"/installations"}
-                >
-                  Installations
-                </NavLink>
-              </li>
+              {links.map((link, index) => (
+                <MyNavLink key={index} to={link.path}>
+                  {link.title}
+                </MyNavLink>
+              ))}
             </ul>
           </div>
           <div className="lg:w-10 w-7 h-7 lg:h-10">
@@ -67,36 +58,11 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  `${isActive ? "text-green-600" : undefined}`
-                }
-                to={"/"}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  `${isActive ? "text-green-600" : "text-black"}`
-                }
-                to={"/appsPage"}
-              >
-                Apps
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className={({ isActive }) =>
-                  `${isActive ? "text-green-600" : "text-black"}`
-                }
-                to={"/installations"}
-              >
-                Installations
-              </NavLink>
-            </li>
+            {links.map((link, index) => (
+              <MyNavLink key={index} to={link.path}>
+                {link.title}
+              </MyNavLink>
+            ))}
           </ul>
         </div>
         <div className="navbar-end">
